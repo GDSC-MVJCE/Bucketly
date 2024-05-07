@@ -50,6 +50,7 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   gap: 100px;
   background-color: white;
   padding: 26px;
@@ -115,10 +116,11 @@ button {
 /* LIST STYLES */
 
 .list-container {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 74px;
+  justify-content: space-evenly;
+  gap: 20px;
   margin-top: 36px;
 }
 
