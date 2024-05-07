@@ -19,7 +19,7 @@
 
       <!-- This div contains the inputs needed to add and modify a travel list. -->
       <div class="inputs-container">
-        <form action="">
+        <form id="item-form">
           <div class="input-fields">
             <div class="input-item">
               <label for="place">place:</label>
@@ -29,6 +29,7 @@
                 name="place"
                 placeholder="Enter the place"
                 required
+                autocomplete="off"
               />
             </div>
             <div class="input-item">
@@ -39,6 +40,7 @@
                 name="location"
                 placeholder="Enter the location"
                 required
+                autocomplete="off"
               />
             </div>
             <div class="input-item">
@@ -50,6 +52,7 @@
                 name="plan"
                 placeholder="Enter the plan"
                 required
+                autocomplete="off"
               ></textarea>
             </div>
             <div class="input-item">
@@ -60,6 +63,7 @@
                 name="image"
                 placeholder="Enter the image url"
                 required
+                autocomplete="off"
               />
             </div>
             <div class="input-item">
@@ -70,6 +74,7 @@
                 name="date"
                 placeholder="Enter the date"
                 required
+                autocomplete="off"
               />
             </div>
             <div class="input-item">
@@ -80,6 +85,7 @@
                 name="link"
                 placeholder="Enter the link"
                 required
+                autocomplete="off"
               />
             </div>
           </div>
@@ -90,8 +96,8 @@
       </div>
 
       <!-- This div contains the travel list. -->
-      <div class="list-container">
-        <div class="card">
+      <div class="list-container" id="list-container">
+        <!-- <div class="card">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1280px-Taj_Mahal_%28Edited%29.jpeg"
             alt="taj-mahal"
@@ -180,7 +186,7 @@
             </p>
             <p class="card-footer">14 January 2032</p>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
 
@@ -190,4 +196,5 @@
       <p>Developed by GDSC MVJCE Tech Team</p>
     </footer>
   </body>
+  <script type="module" src="script.js"></script>
 </html>
