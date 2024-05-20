@@ -1,10 +1,10 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const connectDB = require("./db/connect");
 const router = require("./routes/router");
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
+const prisma = require("./config/prisma");
 
 const app = express();
 
@@ -34,15 +34,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 // start server
-const start = async () => {
-	try {
-		await connectDB(process.env.MONGO_URI);
-		app.listen(process.env.PORT, () => {
-			console.log(`Server is running on port ${process.env.PORT}`);
-		});
-	} catch (error) {
-		console.log(error);
-	}
+const start = () => {
+	app.listen(process.env.PORT, () => {
+		console.log(`Server is running on port ${process.env.PORT}`);
+	});
 };
 
 start();
+
+process.on("SIGINT", async () => {
+	await prisma.$disconnect();
+	process.exit();
+});
