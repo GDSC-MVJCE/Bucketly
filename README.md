@@ -4,7 +4,7 @@
 
 **Bucketly** is a sleek and visually appealing travel bucket list web app designed to help users create, edit, and delete their travel goals with ease. Built using HTML, CSS, and JavaScript, this project focuses on providing a smooth and responsive user experience.
 
-![Bucketly Output](https://gist.github.com/Shivam-Sharma-1/56b227855c608783f969f92e68cfa52e/raw/d435f29e2e13eec4434769cf48e36c4f372666e7/Bucketly%2520-%2520Travel%2520Bucket%2520List.png)
+![Bucketly Output](https://gist.githubusercontent.com/Shivam-Sharma-1/56b227855c608783f969f92e68cfa52e/raw/d435f29e2e13eec4434769cf48e36c4f372666e7/Bucketly%2520-%2520Travel%2520Bucket%2520List.png)
 
 ## Features
 
