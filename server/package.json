@@ -1,0 +1,36 @@
+{
+	"name": "bucketly",
+	"version": "1.0.0",
+	"description": "API for bucketly - travel bucket list",
+	"main": "server.js",
+	"scripts": {
+		"dev": "nodemon server.js",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/GDSC-MVJCE/Bucketly.git"
+	},
+	"keywords": [
+		"API",
+		"Nodejs",
+		"express",
+		"backend"
+	],
+	"author": "GDSC-MVJCE",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/GDSC-MVJCE/Bucketly/issues"
+	},
+	"homepage": "https://github.com/GDSC-MVJCE/Bucketly#readme",
+	"dependencies": {
+		"@prisma/client": "^5.14.0",
+		"cors": "^2.8.5",
+		"dotenv": "^16.4.5",
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.0",
+		"prisma": "^5.14.0"
+	}
+}
