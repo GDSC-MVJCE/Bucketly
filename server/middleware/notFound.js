@@ -1,5 +1,7 @@
+const { createCustomError } = require("../errors/error");
+
 const notFound = (req, res, next) => {
-	res.status(404).json({ message: "Page does not exist" });
+	next(createCustomError("Page not found", 404));
 };
 
 module.exports = notFound;
