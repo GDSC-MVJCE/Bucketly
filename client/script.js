@@ -1,4 +1,4 @@
-import { items } from "./data.js";
+// import { items } from "./data.js";
 
 const listEle = document.getElementById("list-container");
 const formEle = document.getElementById("item-form");
@@ -9,37 +9,63 @@ const imageInput = document.getElementById("image");
 const dateInput = document.getElementById("date");
 const linkInput = document.getElementById("link");
 
-function addItem(e) {
+var items = [];
+const url = "http://localhost:8000/api/v1/items/";
+
+function formatDateToIST(isoString) {
+  const date = new Date(isoString);
+
+  // Convert the date to India Standard Time (IST)
+  const options = {
+    timeZone: "Asia/Kolkata",
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  };
+  const formattedDate = date.toLocaleString("en-IN", options);
+
+  return formattedDate;
+}
+
+async function addItem(e) {
   e.preventDefault();
+
+  const place = placeInput.value;
+  const location = locationInput.value;
+  const plan = planInput.value;
+  const image = imageInput.value;
+  const date = dateInput.value;
+  const link = linkInput.value;
 
   if (!formEle.dataset.editIndex) {
     // If edit index is not set, add new item
-    const place = placeInput.value;
-    const location = locationInput.value;
-    const plan = planInput.value;
-    const image = imageInput.value;
-    const date = dateInput.value;
-    const link = linkInput.value;
-
-    items.push({
-      place: place,
-      location: location,
-      plan: plan,
-      image: image,
-      date: date,
-      link: link,
-    }); // use .unshift() method to add item to the beginning of the list
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ place, location, plan, image, link, date }),
+      });
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
   } else {
     // If edit index is set, update existing item
     const index = parseInt(formEle.dataset.editIndex);
-    items[index] = {
-      place: placeInput.value,
-      location: locationInput.value,
-      plan: planInput.value,
-      image: imageInput.value,
-      date: dateInput.value,
-      link: linkInput.value,
-    };
+    const id = items[index].id;
+
+    try {
+      await fetch(`${url}/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ place, location, plan, image, link, date }),
+      });
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
 
     formEle.removeAttribute("data-edit-index"); // Remove the edit index after updating the item
   }
@@ -60,15 +86,29 @@ function editItem(index) {
   formEle.dataset.editIndex = index; // Set the edit index
 }
 
-function deleteItem(index) {
-  items.splice(index, 1);
+async function deleteItem(index) {
+  const id = items[index].id;
+  try {
+    await fetch(`${url}/${id}`, {
+      method: "DELETE",
+    });
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
+
   renderList(); // Re-render the list after deleting an item
 }
 
-function renderList() {
-  listEle.innerHTML = items
-    .map(
-      (item) => `
+async function renderList() {
+  const response = await fetch(url);
+  const data = await response.json();
+  items = data.items;
+
+  listEle.innerHTML =
+    items &&
+    items
+      .map(
+        (item) => `
     <div class="card">
       <img src=${item.image} alt=${item.place} />
       <div class="card-content">
@@ -81,20 +121,20 @@ function renderList() {
           </div>
           <div class="card-header-actions">
             <button class="edit-button">
-              <img src="/assets/edit-icon.svg" alt="edit" />
+              <img src="/client/assets/edit-icon.svg" alt="edit" />
             </button>
             <button class="delete-button">
-              <img src="/assets/trash-icon.svg" alt="delete" />
+              <img src="/client/assets/trash-icon.svg" alt="delete" />
             </button>
           </div>
         </div>
         <p>${item.plan}</p>
-        <p class="card-footer">${item.date}</p>
+        <p class="card-footer">${formatDateToIST(item.date)}</p>
       </div>
     </div>
     `
-    )
-    .join("");
+      )
+      .join("");
 
   const deleteButtons = document.querySelectorAll(".delete-button");
   deleteButtons.forEach((button, index) => {

@@ -10,21 +10,21 @@ const app = express();
 
 // middlewares
 app.use(
-	cors({
-		origin: [process.env.CLIENT_URL],
-		methods: ["GET", "POST", "PUT", "DELETE"],
-		allowedHeaders: [
-			"X-CSRF-Token",
-			"X-Requested-With",
-			"Accept",
-			"Accept-Version",
-			"Content-Length",
-			"Content-MD5",
-			"Content-Type",
-			"Date",
-			"X-Api-Version",
-		],
-	})
+  cors({
+    origin: [process.env.CLIENT_URL],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: [
+      "X-CSRF-Token",
+      "X-Requested-With",
+      "Accept",
+      "Accept-Version",
+      "Content-Length",
+      "Content-MD5",
+      "Content-Type",
+      "Date",
+      "X-Api-Version",
+    ],
+  })
 );
 app.use(express.json());
 
@@ -34,15 +34,16 @@ app.use(notFound);
 app.use(errorHandler);
 
 // start server
+const PORT = process.env.PORT || 8000;
 const start = () => {
-	app.listen(process.env.PORT, () => {
-		console.log(`Server is running on port ${process.env.PORT}`);
-	});
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 };
 
 start();
 
 process.on("SIGINT", async () => {
-	await prisma.$disconnect();
-	process.exit();
+  await prisma.$disconnect();
+  process.exit();
 });
