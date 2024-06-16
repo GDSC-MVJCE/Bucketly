@@ -100,9 +100,13 @@ async function deleteItem(index) {
 }
 
 async function renderList() {
-  const response = await fetch(url);
-  const data = await response.json();
-  items = data.items;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    items = data.items;
+  } catch (error) {
+    console.error("Error:", error.message);
+  }
 
   listEle.innerHTML =
     items &&
@@ -121,10 +125,10 @@ async function renderList() {
           </div>
           <div class="card-header-actions">
             <button class="edit-button">
-              <img src="/client/assets/edit-icon.svg" alt="edit" />
+              <img src="./assets/edit-icon.svg" alt="edit" />
             </button>
             <button class="delete-button">
-              <img src="/client/assets/trash-icon.svg" alt="delete" />
+              <img src="./assets/trash-icon.svg" alt="delete" />
             </button>
           </div>
         </div>
