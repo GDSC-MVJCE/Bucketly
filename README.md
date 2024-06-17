@@ -2,7 +2,7 @@
 
 ## Overview
 
-**Bucketly** is a sleek and visually appealing travel bucket list web app designed to help users create, edit, and delete their travel goals with ease. Built using HTML, CSS, and JavaScript, this project focuses on providing a smooth and responsive user experience.
+**Bucketly** is a sleek and visually appealing travel bucket list web app designed to help users create, edit, and delete their travel goals with ease. The frontend is built using HTML, CSS, JavaScript, and Vite (Vanilla JS) for a fast and efficient development process. The backend is powered by Node.js, Express.js, Prisma ORM, and Neon DB with PostgreSQL, providing robust and scalable server-side functionality. This project focuses on providing a smooth and responsive user experience, both on the client and server sides.
 
 ![Bucketly Output](https://gist.githubusercontent.com/Shivam-Sharma-1/56b227855c608783f969f92e68cfa52e/raw/d435f29e2e13eec4434769cf48e36c4f372666e7/Bucketly%2520-%2520Travel%2520Bucket%2520List.png)
 
@@ -14,13 +14,33 @@
 
 ## Technologies Used
 
+### Frontend
+
 - **HTML:** For structuring the web app.
 - **CSS:** For styling and making the app visually appealing.
 - **JavaScript:** For implementing functionality and interactivity.
+- **Vite (Vanilla JS):** For fast and efficient frontend development and build process.
+
+### Backend
+
+- **Node.js:** For running the backend server.
+- **Express.js:** For building the server-side application.
+- **Prisma ORM:** For database operations.
+- **Neon DB with PostgreSQL:** For the database management system.
+
+### Deployment
+
+- **Vercel:** For deploying the client-side application.
+- **Render:** For deploying the backend server.
 
 ## Project Details
 
 This project represents the frontend component of the full stack Bucketly web app, developed by the GDSC MVJCE Tech Team. It serves as an educational tool to be taught in the frontend workshop conducted by GDSC MVJCE.
+
+## Folder Structure
+
+- **client/**: Contains the frontend code.
+- **server/**: Contains the backend code.
 
 ## Installation and Usage
 
@@ -28,21 +48,52 @@ To run this project locally, follow these steps:
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-repo/bucketly.git
+   git clone https://github.com/GDSC-MVJCE/Bucketly.git
    ```
 2. **Navigate to the project directory:**
    ```sh
    cd bucketly
    ```
-3. **Open `index.html` in your preferred web browser:**
+
+### Setting Up the Frontend
+
+1. **Navigate to the client directory:**
    ```sh
-   open index.html
+   cd client
    ```
-   or simply double-click on the `index.html` file.
+2. **Install the dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Run the frontend application:**
+   ```sh
+   npm run dev
+   ```
+
+### Setting Up the Backend
+
+1. **Navigate to the server directory:**
+   ```sh
+   cd ../server
+   ```
+2. **Install the dependencies:**
+   ```sh
+   npm install
+   ```
+3. **Set up the database using Prisma:**
+   ```sh
+   npx prisma generate
+   npx prisma db push
+   ```
+4. **Run the backend server:**
+   ```sh
+   npm run dev
+   ```
 
 ## Authors
 
-[@Shivam-Sharma-1](https://github.com/Shivam-Sharma-1)
+- [@Shivam-Sharma-1](https://github.com/Shivam-Sharma-1)
+- [@Vector-ops](https://github.com/Vector-ops)
 
 ## Contribution
 
@@ -50,51 +101,12 @@ We welcome contributions to improve this project. If you have suggestions or fin
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
 - Developed by the **GDSC MVJCE Tech Team**.
-- Special thanks to all the contributors and workshop participants.
 
 ## Contact
 
-For more information, please reach out to us at [gdscmvjce@example.com](mailto:gdscmvjce@example.com).
-
----
-
-Thank you for using Bucketly! We hope this project inspires you to explore and achieve your travel dreams. Happy traveling! 🌍✈️
-
-## Data
-
-```bash
-var items = [
-  {
-    place: "Taj Mahal",
-    location: "Agra, India",
-    plan: "I'm looking forward to leisurely walking through the lush gardens surrounding the Taj. I'll keep my camera ready for every picturesque corner.",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Taj_Mahal_%28Edited%29.jpeg/1280px-Taj_Mahal_%28Edited%29.jpeg",
-    date: "26 May 2024",
-    link: "https://www.indiatajmahaltour.com/holiday-packages/taj-mahal-tours-from-bangalore.htm",
-  },
-  {
-    place: "Eiffel Tower",
-    location: "Paris, France",
-    plan: "Climbing up the Eiffel Tower is a must-do for me. Whether by elevator or stairs, reaching the top for panoramic views of Paris is going to be unforgettable.",
-    image:
-      "https://media.cntraveler.com/photos/58de89946c3567139f9b6cca/16:9/w_1920,c_limit/GettyImages-468366251.jpg",
-    date: "09 September 2028",
-    link: "https://traveltriangle.com/tour-packages/eiffel-tower",
-  },
-  {
-    place: "Great Wall Of China",
-    location: "Huairou District, China",
-    plan: "I'm beyond excited to finally see the Great Wall of China in person! I'll make sure to take it all in, marveling at its sheer size and historical significance.",
-    image:
-      "https://th-thumbnailer.cdn-si-edu.com/tTWLQXzOH6vwsp7kSFf6Td7ZpZc=/1000x750/filters:no_upscale()/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer/80/fa/80facab4-fe0e-4a56-bd99-a71eb1845fa0/01_14_2014_great_wall.jpg",
-    date: "14 January 2032",
-    link: "https://www.sotc.in/tourism/china-tourism/things-to-do-in-china/great-wall-of-china/2239",
-  },
-];
-```
+For more information, please reach out to us at [gdscmvjce@gmail.com](mailto:gdscmvjce@gmail.com).
