@@ -1,4 +1,4 @@
-# Bucketly - A Travel Bucket List Web App
+# Bucketly Frontend - A Travel Bucket List Web App
 
 ## Overview
 
