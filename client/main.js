@@ -80,7 +80,7 @@ function editItem(index) {
   locationInput.value = item.location;
   planInput.value = item.plan;
   imageInput.value = item.image;
-  dateInput.value = item.date;
+  dateInput.value = formatDateToIST(item.date);
   linkInput.value = item.link;
 
   formEle.dataset.editIndex = index; // Set the edit index
