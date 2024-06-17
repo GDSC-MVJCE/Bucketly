@@ -10,7 +10,7 @@ const dateInput = document.getElementById("date");
 const linkInput = document.getElementById("link");
 
 var items = [];
-const url = "http://localhost:8000/api/v1/items/";
+const url = `${import.meta.env.VITE_SERVER_URL}/api/v1/items/`;
 
 function formatDateToIST(isoString) {
   const date = new Date(isoString);
