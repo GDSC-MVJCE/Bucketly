@@ -1,4 +1,4 @@
-const createCustomError = require("../utils/error.js");
+const createCustomError = require("../utils/error");
 
 const notFound = (req, res, next) => {
   next(createCustomError("Page not found", 404));

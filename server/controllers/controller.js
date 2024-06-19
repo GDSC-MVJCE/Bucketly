@@ -1,6 +1,7 @@
 const prisma = require("../config/prisma");
+const { createCustomError } = require("../utils/error");
 
-const getItems = async (req, res) => {
+const getItems = async (req, res, next) => {
   try {
     const items = await prisma.listItem.findMany({
       orderBy: {
@@ -9,7 +10,8 @@ const getItems = async (req, res) => {
     });
     res.status(200).json({ items });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    // res.status(500).json({ msg: error.message });
+    next(createCustomError("Server Error, Please try again later", 500));
   }
 };
 
@@ -33,7 +35,7 @@ const createItem = async (req, res) => {
     }
     res.status(201).json({ item });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    next(createCustomError("Server Error, Please try again later", 500));
   }
 };
 
@@ -58,7 +60,7 @@ const updateItem = async (req, res) => {
     });
     res.status(200).json({ item });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    next(createCustomError("Server Error, Please try again later", 500));
   }
 };
 
@@ -72,7 +74,7 @@ const deleteItem = async (req, res) => {
     });
     res.status(200).json({ msg: "Item deleted" });
   } catch (error) {
-    res.status(500).json({ msg: error.message });
+    next(createCustomError("Server Error, Please try again later", 500));
   }
 };
 
